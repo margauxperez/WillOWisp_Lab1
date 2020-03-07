@@ -30,3 +30,7 @@ class NewVisitorTest(unittest.TestCase):
 		# She clicks this and she is redirected back to the wiki's homepage.	
 		
 		self.fail('Finish the test!')
+		
+#main method
+if __name__ == '__main__':
+	unittest.main(warnings='ignore')
