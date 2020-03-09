@@ -1,6 +1,9 @@
 from selenium import webdriver
 import unittest
 
+browser = webdriver.Firefox()
+#browser.get('http://localhost:8000')
+
 class NewVisitorTest(unittest.TestCase):
 	#This is another test for git.
 	def setUp(self):
@@ -19,8 +22,8 @@ class NewVisitorTest(unittest.TestCase):
 		self.assertIn('The Will of the Wisps Wiki', self.browser.title)
 		
 		# She sees a list containing three heroes with their corresponding 
-		# names, health points, and damage 
-		
+		# names, health points, and damage
+
 		# When she selects one of the heroes, she is sent to another page
 		# containing more information about the hero (additional stats, lore, image).
 		
