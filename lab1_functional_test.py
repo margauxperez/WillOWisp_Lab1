@@ -49,7 +49,6 @@ class NewVisitorTest(unittest.TestCase):
 		sunflowey_damage = self.browser.find_element_by_id('sunfloweyDamage')
 		self.assertIn('Sunflowey', sunflowey_damage)
 
-
 		# When she selects one of the heroes, she is sent to another page
 		# containing more information about the hero (additional stats, lore, image).
 		#stats
@@ -59,7 +58,6 @@ class NewVisitorTest(unittest.TestCase):
 		self.assertIn('Laugh, Dance, Smile', jester_skills)
 		sunflowey_skills = self.browser.find_element_by_tag_id('sunfloweySkills')
 		self.assertIn('Power Pellet, Sunshine, Pollen Punch', sunflowey_skills)
-
 
 		#lore
 		cloud_lore = self.browser.find_element_by_tag_id('cloudLore')
@@ -73,17 +71,17 @@ class NewVisitorTest(unittest.TestCase):
 		#cloud
 		self.browser.find_element_by_link_text('cloud').click()
 		self.assertIn('/hero/cloud', self.browser.current_url)
-		self.assertIn('Cloud', self.browser.title)
+		self.assertIn('Detail - Cloud', self.browser.title)
 
 		#jester
 		self.browser.find_element_by_link_text('jester').click()
 		self.assertIn('/hero/jester', self.browser.current_url)
-		self.assertIn('Jester', self.browser.title)
+		self.assertIn('Detail - Jester', self.browser.title)
 		
 		#sunflowey
 		self.browser.find_element_by_link_text('sunflowey').click()
 		self.assertIn('/hero/sunflowey', self.browser.current_url)
-		self.assertIn('Sunflowey', self.browser.title)
+		self.assertIn('Detail - Sunflowey', self.browser.title)
 
 		# While she is in a specific hero's page, she sees a button labeled "Back to Heroes List".
 		# She clicks this and she is redirected back to the wiki's homepage.
