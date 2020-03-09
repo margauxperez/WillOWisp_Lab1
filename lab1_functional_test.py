@@ -20,47 +20,67 @@ class NewVisitorTest(unittest.TestCase):
 		# She notices the page title and header mention 
 		# 'The Will of the Wisps Wiki'
 		self.assertIn('The Will of the Wisps Wiki', self.browser.title)
+		#header_text = self.browser.find_element_by_tag_name('h1')
+		#self.assertIn('The Will of the Wisps Wiki', header_text)
 		
 		# She sees a list containing three heroes with their corresponding 
 		# names, health points, and damage
 		#names
 		cloud_text = self.browser.find_element_by_id('cloud')
-		self.assertIn('Cloud', cloud_text.text)
+		self.assertIn('Cloud', cloud_text)
 		jester_text = self.browser.find_element_by_id('jester')
-		self.assertIn('Jester', jester_text.text)
+		self.assertIn('Jester', jester_text)
 		sunflowey_text = self.browser.find_element_by_id('sunflowey')
-		self.assertIn('Sunflowey', sunflowey_text.text)
+		self.assertIn('Sunflowey', sunflowey_text)
+		
 		#health points
 		cloud_health = self.browser.find_element_by_id('cloudHealth')
-		self.assertIn('Cloud', cloud_health.text)
+		self.assertIn('Cloud', cloud_health)
 		jester_health = self.browser.find_element_by_id('jesterHealth')
-		self.assertIn('Jester', jester_health.text)
+		self.assertIn('Jester', jester_health)
 		sunflowey_health = self.browser.find_element_by_id('sunfloweyHealth')
-		self.assertIn('Sunflowey', sunflowey_health.text)
+		self.assertIn('Sunflowey', sunflowey_health)
+		
 		#damage
 		cloud_damage = self.browser.find_element_by_id('cloudDamage')
-		self.assertIn('Cloud', cloud_damage.text)
+		self.assertIn('Cloud', cloud_damage)
 		jester_damage = self.browser.find_element_by_id('jesterDamage')
-		self.assertIn('Jester', jester_damage.text)
+		self.assertIn('Jester', jester_damage)
 		sunflowey_damage = self.browser.find_element_by_id('sunfloweyDamage')
-		self.assertIn('Sunflowey', sunflowey_damage.text)
+		self.assertIn('Sunflowey', sunflowey_damage)
 
 
 		# When she selects one of the heroes, she is sent to another page
 		# containing more information about the hero (additional stats, lore, image).
-		#cloud_stat = self.browser.find_element_by_id('cloud')
-		#self.assertIn('Cloud', cloud_text.text)
+		#stats
+		cloud_skills = self.browser.find_element_by_tag_id('cloudSkills')
+		self.assertIn('Nimbus, Rain Cloud, Thunderbolt', cloud_skills)
+		jester_skills = self.browser.find_element_by_tag_id('jesterSkills')
+		self.assertIn('Laugh, Dance, Smile', jester_skills)
+		sunflowey_skills = self.browser.find_element_by_tag_id('sunfloweySkills')
+		self.assertIn('Power Pellet, Sunshine, Pollen Punch', sunflowey_skills)
 
-		#jester_text = self.browser.find_element_by_id('jester')
-		#self.assertIn('Jester', jester_text.text)
 
-		#sunflowey_text = self.browser.find_element_by_id('sunflowey')
-		#self.assertIn('Sunflowey', sunflowey_text.text)
+		#lore
+		cloud_lore = self.browser.find_element_by_tag_id('cloudLore')
+		self.assertIn('I am a cloud. When I pee you call it "rain".', cloud_lore)
+		jester_lore = self.browser.find_element_by_tag_id('jesterLore')
+		self.assertIn('I do it for the LOLs.', jester_lore)
+		sunflowey_lore = self.browser.find_element_by_tag_id('sunfloweyLore')
+		self.assertIn('I am Sunflowey. Sometimes a sun, sometimes a flower.', sunflowey_lore)
 		
 		# She spots the page title and header mentions the name of the hero she selected.
+		#cloud
+		self.browser.find_element_by_link_text('cloud').click()
+		self.assertIn('/hero/cloud/', self.browser.current_url)
+		self.assertIn('Cloud', self.browser.title)
 		
+
+
 		# While she is in a specific hero's page, she sees a button labeled "Back to Heroes List".
-		# She clicks this and she is redirected back to the wiki's homepage.	
+		# She clicks this and she is redirected back to the wiki's homepage.
+		self.browser.find_element_by_link_text('Back to Heroes').click()
+		self.assertIn('/heroes/', self.browser.current_url)
 		
 		self.fail('Finish the test!')
 		
