@@ -93,3 +93,6 @@ class NewVisitorTest(unittest.TestCase):
 #main method
 if __name__ == '__main__':
 	unittest.main(warnings='ignore')
+
+
+#this is an edit to check if the commit works
